@@ -8,6 +8,67 @@ const stats = document.querySelectorAll('.stat-card span');
 const observerOptions = { threshold: 0.2 };
 let hovered = false;
 
+// Particle effect setup
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height - canvas.height;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.speedY = Math.random() * 0.3 + 0.1;
+    this.opacity = Math.random() * 0.5 + 0.2;
+  }
+
+  update() {
+    this.y += this.speedY;
+    if (this.y > canvas.height) {
+      this.y = -10;
+      this.x = Math.random() * canvas.width;
+    }
+  }
+
+  draw() {
+    ctx.fillStyle = `rgba(200, 169, 110, ${this.opacity})`;
+    ctx.fillRect(this.x, this.y, this.size, this.size);
+  }
+}
+
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < 50; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  for (let particle of particles) {
+    particle.update();
+    particle.draw();
+  }
+
+  requestAnimationFrame(animateParticles);
+}
+
+// Initialize particles
+resizeCanvas();
+initParticles();
+animateParticles();
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  initParticles();
+});
+
 function lerp(start, end, t) {
   return start + (end - start) * t;
 }
