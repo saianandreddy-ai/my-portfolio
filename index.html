@@ -1,310 +1,291 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Anand Reddy Singareddy - Generative AI Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Anand | Generative AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="cursor-glow"></div>
-    <nav id="navbar">   
-        <div class="nav-container">
-            <div class="nav-name">Sai Anand Reddy</div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+  <div class="page-spotlight" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="brand-link">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Sai Anand</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar-underline"></div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-nav">
+      <a href="#about">About</a>
+      <a href="#skills">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
 
-    <section id="hero">
-        <div class="hero-background">
-            <div class="tech-grid"></div>
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <div class="hero-copy">
+          <div class="hero-label">
+            <span class="status-dot"></span>
+            Available for opportunities
+          </div>
+          <h1>Engineering the<br>Future of AI</h1>
+          <p>Generative AI Engineer with 10 years of experience building LLM-powered systems that actually ship.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#experience">View Work</a>
+            <a class="button button-secondary" href="resume.pdf" download="Sai_Anand_Reddy_Resume.pdf">Download Resume</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card"><span>10+</span><p>Years Experience</p></div>
+            <div class="stat-card"><span>5+</span><p>Industries Impacted</p></div>
+            <div class="stat-card"><span>30%</span><p>Avg Efficiency Gains</p></div>
+          </div>
         </div>
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Sai Anand Reddy Singareddy</span></h1>
-            <div class="typing-container">
-                <span id="typing-text"></span>
-                <span class="cursor">|</span>
-            </div>
-            <p class="tagline">Building intelligent AI systems that transform industries</p>
-            <div class="hero-buttons">
-                <button class="btn-primary">View My Work</button>
-                <a href="resume.pdf" download="Sai_Anand_Reddy_Resume.pdf" class="btn-secondary">Download Resume</a>
-            </div>
+        <div class="hero-visual">
+          <div class="profile-ring">
+            <div class="profile-glow"></div>
+            <img src="profile.jpg" alt="Sai Anand profile photo" class="profile-photo">
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="glass-card">
-                <p>I didn't start with AI. I grew into it.</p>
-                <p>My journey began writing backend code in Hyderabad, debugging APIs late into the night, learning how systems talk to each other. Back then, intelligence in software meant a well optimized SQL query. I had no idea that a decade later I would be building systems that think.</p>
-                <p>Over 10 years, I moved through every layer of the stack. From legacy Python migrations to real time Kafka pipelines, from fraud detection models to enterprise LLM copilots serving thousands of users. Each role taught me something the previous one couldn't. Healthcare taught me precision. Banking taught me trust. Retail taught me scale. Insurance taught me consequence.</p>
-                <p>Today I work at the intersection of language models and real world decisions. I build RAG pipelines that help underwriters make faster calls. I design GenAI systems that process claims documents in seconds instead of hours. I architect retrieval systems that don't just find information but understand context.</p>
-                <p>What drives me isn't the technology itself. It's the moment a workflow that used to take a team three days gets done in three minutes. That's the version of AI I'm interested in. Not the demo, but the deployment.</p>
-                <p>I'm based in New York, currently at New York Life Insurance, and I'm always thinking about what comes next in the GenAI space. If you're building something ambitious, I'd love to hear about it.</p>
-            </div>
+    <section class="section about-section" id="about">
+      <div class="section-heading">
+        <span class="section-label">ABOUT</span>
+        <h2>The story behind the engineer</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I didn't start with AI. I grew into it.</p>
+          <p>My journey began writing backend code in Hyderabad, debugging APIs late into the night, learning how systems talk to each other. Back then, intelligence in software meant a well optimized SQL query. I had no idea that a decade later I would be building systems that think.</p>
+          <p>Over 10 years, I moved through every layer of the stack. From legacy Python migrations to real time Kafka pipelines, from fraud detection models to enterprise LLM copilots serving thousands of users. Each role taught me something the previous one could not. Healthcare taught me precision. Banking taught me trust. Retail taught me scale. Insurance taught me consequence.</p>
+          <p>Today I work at the intersection of language models and real world decisions. I build RAG pipelines that help underwriters make faster calls. I design GenAI systems that process claims documents in seconds instead of hours. I architect retrieval systems that do not just find information but understand context.</p>
+          <p>What drives me is not the technology itself. It is the moment a workflow that used to take a team three days gets done in three minutes. That is the version of AI I am interested in. Not the demo, but the deployment.</p>
         </div>
+        <aside class="about-card">
+          <div class="about-card-title">Current Role</div>
+          <p class="about-card-text">Generative AI Engineer</p>
+          <div class="about-card-meta">
+            <div><span>Company</span><strong>New York Life Insurance</strong></div>
+            <div><span>Location</span><strong>New York, NY</strong></div>
+            <div class="role-status"><span class="status-indicator"></span><strong>Open to opportunities</strong></div>
+          </div>
+          <div class="about-card-contact">
+            <a href="mailto:saianandreddy8@gmail.com">saianandreddy8@gmail.com</a>
+            <a href="https://www.linkedin.com/in/saianandreddysingareddy/" target="_blank" rel="noopener noreferrer">linkedin.com/in/saianandreddysingareddy</a>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section id="skills" class="section">
-        <div class="container">
-            <h2>Technical Arsenal</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Python</span>
-                        <span class="skill-pill">SQL</span>
-                        <span class="skill-pill">Node.js</span>
-                        <span class="skill-pill">Bash</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>AI/ML</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">LLMs</span>
-                        <span class="skill-pill">RAG</span>
-                        <span class="skill-pill">NLP</span>
-                        <span class="skill-pill">Fraud Detection</span>
-                        <span class="skill-pill">Feature Engineering</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">TensorFlow</span>
-                        <span class="skill-pill">PyTorch</span>
-                        <span class="skill-pill">LangChain</span>
-                        <span class="skill-pill">Hugging Face</span>
-                        <span class="skill-pill">Scikit-learn</span>
-                        <span class="skill-pill">FastAPI</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">AWS (SageMaker, EKS, S3, Glue)</span>
-                        <span class="skill-pill">Azure (OpenAI, ML, Databricks, AKS)</span>
-                        <span class="skill-pill">GCP (Vertex AI)</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Big Data</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Apache Spark</span>
-                        <span class="skill-pill">PySpark</span>
-                        <span class="skill-pill">Kafka</span>
-                        <span class="skill-pill">Airflow</span>
-                        <span class="skill-pill">Hadoop</span>
-                        <span class="skill-pill">Snowflake</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>DevOps</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Docker</span>
-                        <span class="skill-pill">Kubernetes</span>
-                        <span class="skill-pill">Jenkins</span>
-                        <span class="skill-pill">MLflow</span>
-                        <span class="skill-pill">Prometheus</span>
-                        <span class="skill-pill">Grafana</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-pills">
-                        <span class="skill-pill">PostgreSQL</span>
-                        <span class="skill-pill">MongoDB</span>
-                        <span class="skill-pill">Neo4j</span>
-                        <span class="skill-pill">Oracle</span>
-                        <span class="skill-pill">Snowflake</span>
-                        <span class="skill-pill">FAISS</span>
-                        <span class="skill-pill">OpenSearch</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="section skills-section" id="skills">
+      <div class="section-heading">
+        <span class="section-label">EXPERTISE</span>
+        <h2>The complete toolkit</h2>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <h3>AI and ML</h3>
+          <div class="skill-tags">
+            <span>LLMs</span><span>RAG</span><span>NLP</span><span>Fraud Detection</span><span>Feature Engineering</span><span>Prompt Engineering</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Frameworks</h3>
+          <div class="skill-tags">
+            <span>TensorFlow</span><span>PyTorch</span><span>LangChain</span><span>Hugging Face</span><span>Scikit-learn</span><span>FastAPI</span><span>Keras</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Cloud</h3>
+          <div class="skill-tags">
+            <span>AWS SageMaker</span><span>AWS EKS</span><span>AWS S3</span><span>Azure OpenAI</span><span>Azure ML</span><span>Azure Databricks</span><span>GCP Vertex AI</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Big Data</h3>
+          <div class="skill-tags">
+            <span>Apache Spark</span><span>PySpark</span><span>Kafka</span><span>Airflow</span><span>Hadoop</span><span>Snowflake</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>DevOps</h3>
+          <div class="skill-tags">
+            <span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>MLflow</span><span>Prometheus</span><span>Grafana</span><span>CI/CD</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Databases</h3>
+          <div class="skill-tags">
+            <span>PostgreSQL</span><span>MongoDB</span><span>Neo4j</span><span>Oracle</span><span>FAISS</span><span>OpenSearch</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>Programming</h3>
+          <div class="skill-tags">
+            <span>Python</span><span>SQL</span><span>Node.js</span><span>Bash</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="experience" class="section">
-        <div class="container">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content left">
-                        <div class="glass-card">
-                            <h3>New York Life Insurance, New York, NY</h3>
-                            <h4>Generative AI Engineer | Oct 2024 – Present</h4>
-                            <ul>
-                                <li>Built RAG pipelines for claims intelligence and underwriting copilots using Vertex AI, LangChain, Hugging Face</li>
-                                <li>Achieved 18% reduction in claims processing time and 15% improvement in underwriting turnaround</li>
-                                <li>Deployed scalable GenAI services on AWS EKS with FAISS + OpenSearch hybrid retrieval</li>
-                                <li>Enforced PII masking, IAM controls, and AWS KMS encryption for compliance</li>
-                            </ul>
-                            <div class="tags">
-                                <span>Vertex AI</span>
-                                <span>LangChain</span>
-                                <span>FastAPI</span>
-                                <span>FAISS</span>
-                                <span>PySpark</span>
-                                <span>Airflow</span>
-                                <span>Docker</span>
-                                <span>EKS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content right">
-                        <div class="glass-card">
-                            <h3>Citigroup, New York, NY</h3>
-                            <h4>Generative AI / Data Scientist | Apr 2022 – Sept 2024</h4>
-                            <ul>
-                                <li>Improved document classification accuracy by 16% and reduced fraud false positives by 12%</li>
-                                <li>Transformed traditional pipelines into RAG architectures using LangChain and FAISS</li>
-                                <li>Built fraud detection models using XGBoost and Neo4j graph analytics</li>
-                                <li>Exposed AI services via FastAPI REST APIs with CI/CD via Jenkins</li>
-                            </ul>
-                            <div class="tags">
-                                <span>LangChain</span>
-                                <span>FAISS</span>
-                                <span>Snowflake</span>
-                                <span>XGBoost</span>
-                                <span>Neo4j</span>
-                                <span>PySpark</span>
-                                <span>Airflow</span>
-                                <span>AWS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content left">
-                        <div class="glass-card">
-                            <h3>The Home Depot, Atlanta, GA</h3>
-                            <h4>AI/ML Engineer / Data Scientist | Aug 2020 – Mar 2022</h4>
-                            <ul>
-                                <li>Improved recommendation relevance by 14% and customer engagement by 12%</li>
-                                <li>Built real-time recommendation systems using collaborative filtering and reinforcement learning</li>
-                                <li>Designed NLP models for sentiment analysis using BERT and TensorFlow</li>
-                                <li>Scaled pipelines using PySpark on Amazon EMR and Kafka</li>
-                            </ul>
-                            <div class="tags">
-                                <span>TensorFlow</span>
-                                <span>PyTorch</span>
-                                <span>BERT</span>
-                                <span>Kafka</span>
-                                <span>PySpark</span>
-                                <span>EMR</span>
-                                <span>Airflow</span>
-                                <span>FastAPI</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content right">
-                        <div class="glass-card">
-                            <h3>Anthem, Indianapolis, IN</h3>
-                            <h4>Data Scientist / ML Engineer | Jan 2019 – Jul 2020</h4>
-                            <ul>
-                                <li>Achieved 25% improvement in fraud detection accuracy and 30% faster claims processing</li>
-                                <li>Built ML models (Random Forest, XGBoost, deep learning) for fraud detection</li>
-                                <li>Engineered NLP pipelines using spaCy and NLTK on medical records</li>
-                                <li>Deployed inference APIs on Azure Kubernetes Service with Docker</li>
-                            </ul>
-                            <div class="tags">
-                                <span>Azure ML</span>
-                                <span>AKS</span>
-                                <span>Databricks</span>
-                                <span>PySpark</span>
-                                <span>XGBoost</span>
-                                <span>MLflow</span>
-                                <span>FastAPI</span>
-                                <span>Kafka</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content left">
-                        <div class="glass-card">
-                            <h3>GGK Technologies, Hyderabad, India</h3>
-                            <h4>Software Developer | Aug 2016 – Dec 2018</h4>
-                            <ul>
-                                <li>Improved application performance by 18% through backend optimization</li>
-                                <li>Built RESTful APIs using Django REST Framework and Flask</li>
-                                <li>Migrated legacy systems from Perl/PHP to Python modular architecture</li>
-                            </ul>
-                            <div class="tags">
-                                <span>Python</span>
-                                <span>Django</span>
-                                <span>Flask</span>
-                                <span>MySQL</span>
-                                <span>Oracle</span>
-                                <span>REST APIs</span>
-                                <span>Linux</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="section experience-section" id="experience">
+      <div class="section-heading">
+        <span class="section-label">EXPERIENCE</span>
+        <h2>10 years of impact</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-card">
+          <div class="timeline-marker"></div>
+          <div>
+            <h3>New York Life Insurance</h3>
+            <p class="role-title">Generative AI Engineer</p>
+            <p class="meta">Oct 2024 to Present · New York NY</p>
+            <ul>
+              <li>Built RAG pipelines for claims intelligence and underwriting copilots using Vertex AI, LangChain and Hugging Face</li>
+              <li>Achieved 18 percent reduction in claims processing time and 15 percent improvement in underwriting turnaround</li>
+              <li>Deployed scalable GenAI services on AWS EKS with FAISS and OpenSearch hybrid retrieval</li>
+              <li>Enforced PII masking, IAM controls and AWS KMS encryption for enterprise compliance</li>
+            </ul>
+            <div class="tech-tags"><span>Vertex AI</span><span>LangChain</span><span>FastAPI</span><span>FAISS</span><span>PySpark</span><span>Airflow</span><span>Docker</span><span>EKS</span></div>
+          </div>
+        </article>
+
+        <article class="timeline-card">
+          <div class="timeline-marker"></div>
+          <div>
+            <h3>Citigroup</h3>
+            <p class="role-title">Generative AI / Data Scientist</p>
+            <p class="meta">Apr 2022 to Sep 2024 · New York NY</p>
+            <ul>
+              <li>Improved document classification accuracy by 16 percent and reduced fraud false positives by 12 percent</li>
+              <li>Transformed traditional pipelines into RAG architectures using LangChain and FAISS</li>
+              <li>Built fraud detection models using XGBoost and Neo4j graph analytics</li>
+              <li>Exposed AI services via FastAPI REST APIs with full CI/CD via Jenkins</li>
+            </ul>
+            <div class="tech-tags"><span>LangChain</span><span>FAISS</span><span>Snowflake</span><span>XGBoost</span><span>Neo4j</span><span>PySpark</span><span>Airflow</span><span>AWS</span></div>
+          </div>
+        </article>
+
+        <article class="timeline-card">
+          <div class="timeline-marker"></div>
+          <div>
+            <h3>The Home Depot</h3>
+            <p class="role-title">AI/ML Engineer / Data Scientist</p>
+            <p class="meta">Aug 2020 to Mar 2022 · Atlanta GA</p>
+            <ul>
+              <li>Improved recommendation relevance by 14 percent and customer engagement by 12 percent</li>
+              <li>Built real time recommendation systems using collaborative filtering and reinforcement learning</li>
+              <li>Designed NLP models for sentiment analysis using BERT and TensorFlow</li>
+              <li>Scaled data pipelines using PySpark on Amazon EMR with Kafka for real time feeds</li>
+            </ul>
+            <div class="tech-tags"><span>TensorFlow</span><span>PyTorch</span><span>BERT</span><span>Kafka</span><span>PySpark</span><span>EMR</span><span>Airflow</span><span>FastAPI</span></div>
+          </div>
+        </article>
+
+        <article class="timeline-card">
+          <div class="timeline-marker"></div>
+          <div>
+            <h3>Anthem</h3>
+            <p class="role-title">Data Scientist / ML Engineer</p>
+            <p class="meta">Jan 2019 to Jul 2020 · Indianapolis IN</p>
+            <ul>
+              <li>Achieved 25 percent improvement in fraud detection accuracy and 30 percent faster claims processing</li>
+              <li>Built ML models using Random Forest, XGBoost and deep learning for fraud and anomaly detection</li>
+              <li>Engineered NLP pipelines using spaCy and NLTK to process medical records</li>
+              <li>Deployed inference APIs on Azure Kubernetes Service with Docker</li>
+            </ul>
+            <div class="tech-tags"><span>Azure ML</span><span>AKS</span><span>Databricks</span><span>PySpark</span><span>XGBoost</span><span>MLflow</span><span>FastAPI</span><span>Kafka</span></div>
+          </div>
+        </article>
+
+        <article class="timeline-card">
+          <div class="timeline-marker"></div>
+          <div>
+            <h3>GGK Technologies</h3>
+            <p class="role-title">Software Developer</p>
+            <p class="meta">Aug 2016 to Dec 2018 · Hyderabad India</p>
+            <ul>
+              <li>Improved application performance by 18 percent through backend optimization</li>
+              <li>Built RESTful APIs using Django REST Framework and Flask</li>
+              <li>Migrated legacy Perl and PHP systems to clean Python modular architecture</li>
+            </ul>
+            <div class="tech-tags"><span>Python</span><span>Django</span><span>Flask</span><span>MySQL</span><span>Oracle</span><span>REST APIs</span><span>Linux</span></div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="education" class="section">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="glass-card">
-                <h3>Bachelor of Technology</h3>
-                <p>Sreenidhi University, Hyderabad</p>
-            </div>
-        </div>
+    <section class="section education-section">
+      <div class="section-heading">
+        <span class="section-label">EDUCATION</span>
+        <h2>Academic foundation</h2>
+      </div>
+      <div class="education-card">
+        <p class="education-degree">Bachelor of Technology</p>
+        <p class="education-school">Sreenidhi University, Hyderabad</p>
+      </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <div class="glass-card">
-                <p class="contact-tagline">Let's build something intelligent together</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <a href="mailto:saianandreddy8@gmail.com">saianandreddy8@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Phone:</span>
-                        <a href="tel:+19134289284">+1 (913) 428-9284</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">LinkedIn:</span>
-                        <a href="https://www.linkedin.com/in/saianandreddysingareddy/" target="_blank" rel="noopener noreferrer" class="linkedin-btn">Connect on LinkedIn</a>
-                    </div>
-                </div>
-            </div>
+    <section class="section contact-section" id="contact">
+      <div class="section-heading">
+        <span class="section-label">CONTACT</span>
+        <h2>Let's build something that matters</h2>
+        <p class="section-copy">Available for senior roles, consulting, and ambitious AI projects</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:saianandreddy8@gmail.com">
+          <span>Email</span>
+          <strong>saianandreddy8@gmail.com</strong>
+        </a>
+        <div class="contact-card">
+          <span>Phone</span>
+          <strong>+1(913) 428-9284</strong>
         </div>
+        <a class="contact-card" href="https://www.linkedin.com/in/saianandreddysingareddy/" target="_blank" rel="noopener noreferrer">
+          <span>LinkedIn</span>
+          <strong>Connect on LinkedIn</strong>
+        </a>
+      </div>
+      <div class="contact-cta">
+        <a class="button button-primary button-pulse" href="mailto:saianandreddy8@gmail.com">Open to Work</a>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Sai Anand Reddy Singareddy | Built with passion for AI</p>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© 2025 Sai Anand</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saianandreddysingareddy/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:saianandreddy8@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
