@@ -619,13 +619,12 @@ main > section > * {
   display: grid;
   gap: 1.5rem;
   position: relative;
-  margin-left: 2rem;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: -1.85rem;
+  left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -636,7 +635,7 @@ main > section > * {
   position: relative;
   display: grid;
   gap: 1rem;
-  padding: 1.75rem 1.5rem 1.75rem 2.25rem;
+  padding: 1.75rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 28px;
@@ -652,7 +651,7 @@ main > section > * {
 
 .timeline-marker {
   position: absolute;
-  left: -2.25rem;
+  left: -11px;
   top: 1.7rem;
   width: 22px;
   height: 22px;
@@ -719,7 +718,6 @@ main > section > * {
 }
 
 .education-card {
-  max-width: 720px;
   border: 1px solid var(--border);
   border-radius: 28px;
   padding: 2rem;
@@ -838,26 +836,6 @@ main > section > * {
 
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .timeline {
-    margin-left: 0;
-  }
-
-  .timeline::before {
-    left: 15px;
-  }
-
-  .timeline-marker {
-    left: -12px;
-  }
-
-  .timeline-card {
-    padding-left: 1.5rem;
-  }
-
-  .timeline-marker {
-    left: -12px;
   }
 
   main > section {
