@@ -158,6 +158,8 @@ document.querySelector('.btn-primary').addEventListener('click', () => {
 });
 
 document.querySelector('.btn-secondary').addEventListener('click', () => {
+    // Placeholder for resume download
+    alert('Resume download functionality would be implemented here');
 });
 
 // LinkedIn button functionality

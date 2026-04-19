@@ -6,25 +6,18 @@
     <title>Sai Anand Reddy Singareddy - Generative AI Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="sandstorm"></canvas>
-    <div class="texture-overlay"></div>
     <div id="cursor-glow"></div>
-    <div id="cursor-trail"></div>
-
-    <nav id="navbar">
+    <nav id="navbar">   
         <div class="nav-container">
-            <div class="nav-brand">
-                <span class="logo-text">Sai Anand Reddy</span>
-                <span class="logo-sub">Mentat of Arrakis</span>
-            </div>
+            <div class="nav-name">Sai Anand Reddy</div>
             <div class="nav-links">
-                <a href="#about">The Mentat</a>
-                <a href="#skills">Arsenal</a>
-                <a href="#experience">Journey</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="hamburger">
@@ -35,31 +28,28 @@
         </div>
     </nav>
 
-    <section id="hero" class="section hero-section">
+    <section id="hero">
         <div class="hero-background">
-            <div class="hero-dunes"></div>
-            <div class="hero-landscape"></div>
-            <div class="hero-eye"></div>
+            <div class="tech-grid"></div>
         </div>
-        <div class="container hero-content">
-            <p class="hero-subtitle">Watcher of spice and machine</p>
-            <h1 class="hero-title">I am Sai Anand Reddy Singareddy</h1>
-            <div class="hero-carve">
-                <span id="carved-text"></span><span class="stone-cursor">▌</span>
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Sai Anand Reddy Singareddy</span></h1>
+            <div class="typing-container">
+                <span id="typing-text"></span>
+                <span class="cursor">|</span>
             </div>
-            <p class="hero-tagline">The mystery of life isn't a problem to solve, but a reality to experience — I build AI that experiences it with you</p>
-            <div class="hero-actions">
+            <p class="tagline">Building intelligent AI systems that transform industries</p>
+            <div class="hero-buttons">
                 <button class="btn-primary">View My Work</button>
                 <a href="resume.pdf" download="Sai_Anand_Reddy_Resume.pdf" class="btn-secondary">Download Resume</a>
             </div>
-            <button id="wind-toggle" class="wind-toggle" aria-pressed="false">Desert Wind</button>
         </div>
     </section>
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title"><span>The Mentat</span></h2>
-            <div class="parchment-card">
+            <h2>About Me</h2>
+            <div class="glass-card">
                 <p>I didn't start with AI. I grew into it.</p>
                 <p>My journey began writing backend code in Hyderabad, debugging APIs late into the night, learning how systems talk to each other. Back then, intelligence in software meant a well optimized SQL query. I had no idea that a decade later I would be building systems that think.</p>
                 <p>Over 10 years, I moved through every layer of the stack. From legacy Python migrations to real time Kafka pipelines, from fraud detection models to enterprise LLM copilots serving thousands of users. Each role taught me something the previous one couldn't. Healthcare taught me precision. Banking taught me trust. Retail taught me scale. Insurance taught me consequence.</p>
@@ -72,10 +62,10 @@
 
     <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title"><span>The Arsenal of a Mentat</span></h2>
+            <h2>Technical Arsenal</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3><span class="skill-icon">✦</span> House Programming</h3>
+                    <h3>Programming</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">Python</span>
                         <span class="skill-pill">SQL</span>
@@ -84,7 +74,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">⚔</span> House AI</h3>
+                    <h3>AI/ML</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">LLMs</span>
                         <span class="skill-pill">RAG</span>
@@ -94,7 +84,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">⛏</span> House Frameworks</h3>
+                    <h3>Frameworks</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">TensorFlow</span>
                         <span class="skill-pill">PyTorch</span>
@@ -105,7 +95,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">☼</span> House Cloud</h3>
+                    <h3>Cloud</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">AWS (SageMaker, EKS, S3, Glue)</span>
                         <span class="skill-pill">Azure (OpenAI, ML, Databricks, AKS)</span>
@@ -113,7 +103,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">▴</span> House Big Data</h3>
+                    <h3>Big Data</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">Apache Spark</span>
                         <span class="skill-pill">PySpark</span>
@@ -124,7 +114,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">⚗</span> House DevOps</h3>
+                    <h3>DevOps</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">Docker</span>
                         <span class="skill-pill">Kubernetes</span>
@@ -135,7 +125,7 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><span class="skill-icon">✹</span> House Databases</h3>
+                    <h3>Databases</h3>
                     <div class="skill-pills">
                         <span class="skill-pill">PostgreSQL</span>
                         <span class="skill-pill">MongoDB</span>
@@ -152,14 +142,13 @@
 
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title"><span>The Journey Across the Desert</span></h2>
+            <h2>Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content left">
-                        <div class="field-report">
-                            <h3 class="company-name">House New York Life</h3>
-                            <p class="company-location">New York, NY</p>
-                            <div class="date-wrap"><span class="dune-date">10165 AG</span><span class="real-date">Oct 2024 – Present</span></div>
+                        <div class="glass-card">
+                            <h3>New York Life Insurance, New York, NY</h3>
+                            <h4>Generative AI Engineer | Oct 2024 – Present</h4>
                             <ul>
                                 <li>Built RAG pipelines for claims intelligence and underwriting copilots using Vertex AI, LangChain, Hugging Face</li>
                                 <li>Achieved 18% reduction in claims processing time and 15% improvement in underwriting turnaround</li>
@@ -181,10 +170,9 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content right">
-                        <div class="field-report">
-                            <h3 class="company-name">House Citigroup</h3>
-                            <p class="company-location">New York, NY</p>
-                            <div class="date-wrap"><span class="dune-date">10142 AG</span><span class="real-date">Apr 2022 – Sept 2024</span></div>
+                        <div class="glass-card">
+                            <h3>Citigroup, New York, NY</h3>
+                            <h4>Generative AI / Data Scientist | Apr 2022 – Sept 2024</h4>
                             <ul>
                                 <li>Improved document classification accuracy by 16% and reduced fraud false positives by 12%</li>
                                 <li>Transformed traditional pipelines into RAG architectures using LangChain and FAISS</li>
@@ -206,10 +194,9 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content left">
-                        <div class="field-report">
-                            <h3 class="company-name">House Home Depot</h3>
-                            <p class="company-location">Atlanta, GA</p>
-                            <div class="date-wrap"><span class="dune-date">10130 AG</span><span class="real-date">Aug 2020 – Mar 2022</span></div>
+                        <div class="glass-card">
+                            <h3>The Home Depot, Atlanta, GA</h3>
+                            <h4>AI/ML Engineer / Data Scientist | Aug 2020 – Mar 2022</h4>
                             <ul>
                                 <li>Improved recommendation relevance by 14% and customer engagement by 12%</li>
                                 <li>Built real-time recommendation systems using collaborative filtering and reinforcement learning</li>
@@ -231,10 +218,9 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content right">
-                        <div class="field-report">
-                            <h3 class="company-name">House Anthem</h3>
-                            <p class="company-location">Indianapolis, IN</p>
-                            <div class="date-wrap"><span class="dune-date">10118 AG</span><span class="real-date">Jan 2019 – Jul 2020</span></div>
+                        <div class="glass-card">
+                            <h3>Anthem, Indianapolis, IN</h3>
+                            <h4>Data Scientist / ML Engineer | Jan 2019 – Jul 2020</h4>
                             <ul>
                                 <li>Achieved 25% improvement in fraud detection accuracy and 30% faster claims processing</li>
                                 <li>Built ML models (Random Forest, XGBoost, deep learning) for fraud detection</li>
@@ -256,10 +242,9 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content left">
-                        <div class="field-report">
-                            <h3 class="company-name">House GGK Technologies</h3>
-                            <p class="company-location">Hyderabad, India</p>
-                            <div class="date-wrap"><span class="dune-date">10100 AG</span><span class="real-date">Aug 2016 – Dec 2018</span></div>
+                        <div class="glass-card">
+                            <h3>GGK Technologies, Hyderabad, India</h3>
+                            <h4>Software Developer | Aug 2016 – Dec 2018</h4>
                             <ul>
                                 <li>Improved application performance by 18% through backend optimization</li>
                                 <li>Built RESTful APIs using Django REST Framework and Flask</li>
@@ -283,8 +268,8 @@
 
     <section id="education" class="section">
         <div class="container">
-            <h2 class="section-title"><span>Education</span></h2>
-            <div class="field-report single-report">
+            <h2>Education</h2>
+            <div class="glass-card">
                 <h3>Bachelor of Technology</h3>
                 <p>Sreenidhi University, Hyderabad</p>
             </div>
@@ -293,8 +278,8 @@
 
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title"><span>Send a Message Across the Desert</span></h2>
-            <div class="hologram-card">
+            <h2>Contact</h2>
+            <div class="glass-card">
                 <p class="contact-tagline">Let's build something intelligent together</p>
                 <div class="contact-info">
                     <div class="contact-item">
@@ -315,9 +300,8 @@
     </section>
 
     <footer>
-        <div class="container footer-inner">
-            <span class="worm-silhouette"></span>
-            <p>Walk without rhythm, and you won't attract the worm</p>
+        <div class="container">
+            <p>&copy; 2025 Sai Anand Reddy Singareddy | Built with passion for AI</p>
         </div>
     </footer>
 

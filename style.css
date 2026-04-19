@@ -422,7 +422,7 @@ a:hover {
 
 .timeline-content.left {
     margin-right: auto;
-    text-align: left;
+    text-align: right;
     transform: translateX(-40px);
 }
 
