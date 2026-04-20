@@ -1,148 +1,485 @@
-﻿const navbar = document.getElementById('navbar');
+﻿const body = document.body;
+const stormCanvas = document.getElementById('stormCanvas');
+const loadingScreen = document.getElementById('loadingScreen');
+const loadingFill = document.getElementById('loadingFill');
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-const mobileLinks = mobileMenu.querySelectorAll('a');
-const pageSpotlight = document.querySelector('.page-spotlight');
-const sections = document.querySelectorAll('.section');
-const stats = document.querySelectorAll('.stat-card span');
-const observerOptions = { threshold: 0.2 };
-let hovered = false;
+const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+const mobileLinks = Array.from(document.querySelectorAll('.mobile-nav a'));
+const buttons = Array.from(document.querySelectorAll('.button, .button-mobile'));
+const stats = document.querySelectorAll('.stat-value');
+const sections = Array.from(document.querySelectorAll('.section, .hero-section'));
+const interactiveCards = Array.from(document.querySelectorAll('.interactive-card'));
+const deLorean = document.getElementById('deLorean');
+const deLoreanLabel = document.querySelector('.deLorean-label');
+const trailLeft = document.querySelector('.trail.trail-left');
+const trailRight = document.querySelector('.trail.trail-right');
+const vroomText = document.getElementById('vroomText');
+const heroWordWraps = Array.from(document.querySelectorAll('.hero-word-wrap'));
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Particle effect setup
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
+let deLoreanX = window.innerWidth / 2 - 40;
+let deLoreanY = window.innerHeight / 2 - 18;
+let deLoreanTargetX = deLoreanX;
+let deLoreanTargetY = deLoreanY;
+let deLoreanLastMove = performance.now();
+let deLoreanFacing = 'right';
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+const canvasContext = stormCanvas.getContext('2d');
+let rainDrops = [];
+let sparks = [];
+let lightningActive = false;
+let lastLightning = 0;
+let visible = true;
+let width = 0;
+let height = 0;
+
+function setCanvasSize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  stormCanvas.width = width * window.devicePixelRatio;
+  stormCanvas.height = height * window.devicePixelRatio;
+  stormCanvas.style.width = width + 'px';
+  stormCanvas.style.height = height + 'px';
+  canvasContext.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
 }
 
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height - canvas.height;
-    this.size = Math.random() * 1.5 + 0.5;
-    this.speedY = Math.random() * 0.3 + 0.1;
-    this.opacity = Math.random() * 0.5 + 0.2;
+function createParticles() {
+  rainDrops = [];
+  const count = window.innerWidth < 768 ? 140 : 260;
+  for (let i = 0; i < count; i += 1) {
+    rainDrops.push({
+      x: Math.random() * width * 1.2 - width * 0.1,
+      y: Math.random() * height,
+      length: 12 + Math.random() * 16,
+      speed: 20 + Math.random() * 28,
+      opacity: 0.02 + Math.random() * 0.03,
+      tilt: 12,
+    });
   }
+  sparks = [];
+  const sparkCount = window.innerWidth < 768 ? 20 : 30;
+  for (let i = 0; i < sparkCount; i += 1) {
+    sparks.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: 1 + Math.random() * 2,
+      vx: Math.random() * 0.8 - 0.4,
+      vy: Math.random() * 0.4 - 0.2,
+      opacity: 0.2 + Math.random() * 0.3,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+}
 
-  update() {
-    this.y += this.speedY;
-    if (this.y > canvas.height) {
-      this.y = -10;
-      this.x = Math.random() * canvas.width;
+function drawBackground(timestamp) {
+  if (!visible) return;
+  canvasContext.clearRect(0, 0, width, height);
+  const gradient = canvasContext.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, '#050508');
+  gradient.addColorStop(1, '#0a0508');
+  canvasContext.fillStyle = gradient;
+  canvasContext.fillRect(0, 0, width, height);
+
+  rainDrops.forEach((drop) => {
+    canvasContext.strokeStyle = `rgba(255,255,255,${drop.opacity})`;
+    canvasContext.lineWidth = 1;
+    canvasContext.beginPath();
+    canvasContext.moveTo(drop.x, drop.y);
+    canvasContext.lineTo(drop.x + drop.tilt, drop.y + drop.length);
+    canvasContext.stroke();
+    drop.x += drop.speed * 0.02;
+    drop.y += drop.speed * 0.9;
+    if (drop.y > height) {
+      drop.y = -drop.length;
+      drop.x = Math.random() * width * 1.2 - width * 0.1;
     }
-  }
-
-  draw() {
-    ctx.fillStyle = `rgba(200, 169, 110, ${this.opacity})`;
-    ctx.fillRect(this.x, this.y, this.size, this.size);
-  }
-}
-
-function initParticles() {
-  particles = [];
-  for (let i = 0; i < 50; i++) {
-    particles.push(new Particle());
-  }
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  for (let particle of particles) {
-    particle.update();
-    particle.draw();
-  }
-
-  requestAnimationFrame(animateParticles);
-}
-
-// Initialize particles
-resizeCanvas();
-initParticles();
-animateParticles();
-
-window.addEventListener('resize', () => {
-  resizeCanvas();
-  initParticles();
-});
-
-function lerp(start, end, t) {
-  return start + (end - start) * t;
-}
-
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 40;
-  navbar.classList.toggle('scrolled', scrolled);
-});
-
-menuToggle.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  });
-});
-
-window.addEventListener('mousemove', (event) => {
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
-  const currentX = parseFloat(pageSpotlight.dataset.x || mouseX);
-  const currentY = parseFloat(pageSpotlight.dataset.y || mouseY);
-  const nextX = lerp(currentX, mouseX, 0.12);
-  const nextY = lerp(currentY, mouseY, 0.12);
-  pageSpotlight.style.left = `${nextX}px`;
-  pageSpotlight.style.top = `${nextY}px`;
-  pageSpotlight.dataset.x = nextX;
-  pageSpotlight.dataset.y = nextY;
-});
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+    if (drop.x > width + 20) {
+      drop.x = -20;
     }
   });
-}, observerOptions);
 
-sections.forEach(section => revealObserver.observe(section));
-
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateStats();
-      statObserver.unobserve(entry.target);
+  sparks.forEach((spark) => {
+    spark.x += spark.vx;
+    spark.y += spark.vy;
+    spark.phase += 0.06;
+    if (spark.x < 0 || spark.x > width || spark.y < 0 || spark.y > height) {
+      spark.x = Math.random() * width;
+      spark.y = Math.random() * height;
     }
+    const opacity = spark.opacity * (0.4 + Math.sin(spark.phase) * 0.6);
+    canvasContext.fillStyle = `rgba(0, 207, 255, ${opacity})`;
+    canvasContext.beginPath();
+    canvasContext.arc(spark.x, spark.y, spark.radius, 0, Math.PI * 2);
+    canvasContext.fill();
   });
-}, { threshold: 0.4 });
 
-statObserver.observe(document.querySelector('.hero-section'));
+  const now = performance.now();
+  if (!lightningActive && now - lastLightning > 4000 + Math.random() * 4000) {
+    lightningActive = true;
+    lastLightning = now;
+  }
+
+  if (lightningActive) {
+    const flash = 0.03;
+    canvasContext.fillStyle = `rgba(255,255,255,${flash})`;
+    canvasContext.fillRect(0, 0, width, height);
+    if (now - lastLightning > 150) lightningActive = false;
+  }
+
+  requestAnimationFrame(drawBackground);
+}
+
+function startCanvas() {
+  setCanvasSize();
+  createParticles();
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(drawBackground);
+  }
+}
+
+function handleMouseMove(event) {
+  if (!deLorean) return;
+  deLoreanTargetX = event.clientX - 40;
+  deLoreanTargetY = event.clientY - 18;
+  deLoreanLastMove = performance.now();
+
+  if (event.movementX > 1) {
+    deLoreanFacing = 'right';
+  } else if (event.movementX < -1) {
+    deLoreanFacing = 'left';
+  }
+
+  deLorean.classList.toggle('face-left', deLoreanFacing === 'left');
+  deLorean.classList.toggle('face-right', deLoreanFacing === 'right');
+  deLorean.classList.remove('idle');
+  deLoreanLabel?.classList.remove('visible');
+}
+
+function animateDeLorean() {
+  if (!deLorean) return;
+  const dx = deLoreanTargetX - deLoreanX;
+  const dy = deLoreanTargetY - deLoreanY;
+  const speed = Math.hypot(dx, dy);
+  deLoreanX += dx * 0.06;
+  deLoreanY += dy * 0.06;
+
+  const idleOffset = deLorean.classList.contains('idle')
+    ? Math.sin(performance.now() / 1500 * Math.PI * 2) * 8
+    : 0;
+
+  deLorean.style.transform = `translate3d(${deLoreanX}px, ${deLoreanY + idleOffset}px, 0) scaleX(${deLoreanFacing === 'left' ? -1 : 1})`;
+
+  if (trailLeft && trailRight) {
+    const trailScale = Math.min(Math.max(speed / 40, 0.9), 2.2);
+    trailLeft.style.setProperty('--trail-scale', trailScale.toFixed(2));
+    trailRight.style.setProperty('--trail-scale', trailScale.toFixed(2));
+    
+    if (deLoreanFacing === 'right') {
+      trailLeft.classList.add('active');
+      trailRight.classList.remove('active');
+    } else {
+      trailLeft.classList.remove('active');
+      trailRight.classList.add('active');
+    }
+    
+    trailLeft.style.left = `${deLoreanX}px`;
+    trailLeft.style.top = `${deLoreanY + 8}px`;
+    trailRight.style.left = `${deLoreanX + 80}px`;
+    trailRight.style.top = `${deLoreanY + 8}px`;
+  }
+
+  if (deLoreanLabel) {
+    deLoreanLabel.style.left = `${deLoreanX + 40}px`;
+    deLoreanLabel.style.top = `${deLoreanY + 45}px`;
+  }
+
+  if (speed < 0.8 && performance.now() - deLoreanLastMove > 120) {
+    deLorean.classList.add('idle');
+  } else {
+    deLorean.classList.remove('idle');
+  }
+
+  if (performance.now() - deLoreanLastMove > 1000) {
+    deLoreanLabel?.classList.add('visible');
+  } else {
+    deLoreanLabel?.classList.remove('visible');
+  }
+
+  requestAnimationFrame(animateDeLorean);
+}
+
+function triggerButtonGlitch(element) {
+  element.classList.add('button-glitch');
+  setTimeout(() => element.classList.remove('button-glitch'), 160);
+}
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+  menuToggle.setAttribute('aria-expanded', 'true');
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}
+
+function toggleMobileMenu() {
+  if (mobileMenu.classList.contains('active')) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
+}
 
 function animateStats() {
-  const values = [10, 5, 30];
-  stats.forEach((stat, index) => {
-    const target = values[index];
-    let current = 0;
-    const increment = target / 40;
-    const interval = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(interval);
+  stats.forEach((stat) => {
+    const target = parseInt(stat.dataset.target, 10) || 0;
+    const suffix = stat.dataset.suffix || '';
+    const duration = 1400;
+    const startTime = performance.now();
+
+    function step(timestamp) {
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      stat.textContent = `${Math.floor(progress * target)}${suffix}`;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        stat.textContent = `${target}${suffix}`;
       }
-      stat.textContent = index === 2 ? `${Math.round(current)}%` : `${Math.round(current)}+`;
-    }, 25);
+    }
+
+    requestAnimationFrame(step);
   });
 }
 
-window.addEventListener('load', () => {
-  pageSpotlight.dataset.x = window.innerWidth / 2;
-  pageSpotlight.dataset.y = window.innerHeight / 2;
-});
+function splitHeroLetters() {
+  heroWordWraps.forEach((wrap) => {
+    const text = wrap.textContent.trim();
+    wrap.innerHTML = text.split('').map((char) => `<span class="hero-letter">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+  });
+}
+
+function animateHeroLetters() {
+  const letters = Array.from(document.querySelectorAll('.hero-letter'));
+  letters.forEach((letter, index) => {
+    letter.style.opacity = '0';
+    letter.style.transform = 'translateY(-24px)';
+    letter.style.display = 'inline-block';
+    letter.style.transition = `opacity 0.6s ease ${index * 0.05}s, transform 0.6s ease ${index * 0.05}s`;
+    requestAnimationFrame(() => {
+      letter.style.opacity = '1';
+      letter.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+function flashSection(section) {
+  const flash = section.querySelector('.section-flash');
+  if (!flash) return;
+  flash.classList.add('active');
+  setTimeout(() => flash.classList.remove('active'), 700);
+}
+
+function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in-view');
+      flashSection(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.18 });
+
+  sections.forEach((section) => {
+    const flashLayer = document.createElement('div');
+    flashLayer.className = 'section-flash';
+    section.appendChild(flashLayer);
+    observer.observe(section);
+  });
+}
+
+function animateNavGlitch(link) {
+  const letters = Array.from(link.querySelectorAll('span'));
+  if (letters.length === 0) return;
+  const glitchCount = Math.min(3, letters.length);
+  for (let i = 0; i < glitchCount; i += 1) {
+    const targetIndex = Math.floor(Math.random() * letters.length);
+    letters[targetIndex].classList.add('glitch-char');
+    setTimeout(() => letters[targetIndex].classList.remove('glitch-char'), 120 + i * 30);
+  }
+}
+
+function prepareNavLinks() {
+  navLinks.forEach((link) => {
+    const text = link.textContent.trim();
+    link.innerHTML = text.split('').map((char) => `<span>${char}</span>`).join('');
+    link.addEventListener('mouseenter', () => animateNavGlitch(link));
+    link.addEventListener('focus', () => animateNavGlitch(link));
+  });
+}
+
+function handleCardTilt(event) {
+  if (window.innerWidth <= 768) return;
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const rotateX = ((y / rect.height) - 0.5) * 16;
+  const rotateY = ((x / rect.width) - 0.5) * 16;
+  card.style.transform = `perspective(1000px) rotateX(${ -rotateX }deg) rotateY(${ rotateY }deg) translateZ(0) translateY(-8px)`;
+}
+
+function resetCardTilt(event) {
+  const card = event.currentTarget;
+  card.style.transform = '';
+}
+
+function addCardInteractions() {
+  interactiveCards.forEach((card) => {
+    card.addEventListener('mousemove', handleCardTilt);
+    card.addEventListener('mouseleave', resetCardTilt);
+  });
+}
+
+function createSparkBurst(pill) {
+  const rect = pill.getBoundingClientRect();
+  for (let i = 0; i < 4; i += 1) {
+    const spark = document.createElement('span');
+    spark.className = 'pill-spark';
+    spark.style.left = `${rect.width / 2}px`;
+    spark.style.top = `${rect.height / 2}px`;
+    spark.style.transform = `rotate(${i * 90}deg)`;
+    pill.appendChild(spark);
+    setTimeout(() => spark.remove(), 320);
+  }
+}
+
+function attachSkillHover() {
+  const pills = document.querySelectorAll('.skill-tags span');
+  pills.forEach((pill) => {
+    pill.addEventListener('mouseenter', () => createSparkBurst(pill));
+  });
+}
+
+function attachExperienceHover() {
+  const entries = document.querySelectorAll('.experience-entry');
+  entries.forEach((entry) => {
+    entry.addEventListener('mouseenter', () => {
+      entry.classList.add('bolt-active');
+      setTimeout(() => entry.classList.remove('bolt-active'), 500);
+    });
+  });
+}
+
+function attachButtonEffects() {
+  buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      triggerButtonGlitch(button);
+      if (button.classList.contains('button-primary') && button.closest('.contact-cta')) {
+        const flash = document.createElement('div');
+        flash.className = 'page-flash';
+        body.appendChild(flash);
+        setTimeout(() => flash.remove(), 200);
+      }
+    });
+  });
+}
+
+function attachDeLoreanHover() {
+  if (!deLorean) return;
+  deLorean.addEventListener('mouseenter', () => {
+    deLorean.classList.add('hovered');
+    setTimeout(() => deLorean.classList.remove('hovered'), 550);
+  });
+}
+
+function attachMobileMenuEvents() {
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
+}
+
+function attachLinkSmoothScroll() {
+  const allLinks = Array.from(document.querySelectorAll('a[href^="#"]'));
+  allLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href');
+      if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          event.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          closeMobileMenu();
+        }
+      }
+    });
+  });
+}
+
+function handleVisibilityChange() {
+  visible = document.visibilityState === 'visible';
+  if (visible) {
+    requestAnimationFrame(drawBackground);
+  }
+}
+
+function init() {
+  setCanvasSize();
+  createParticles();
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(drawBackground);
+  }
+
+  splitHeroLetters();
+  prepareNavLinks();
+  initScrollReveal();
+  addCardInteractions();
+  attachSkillHover();
+  attachExperienceHover();
+  attachButtonEffects();
+  attachDeLoreanHover();
+  attachMobileMenuEvents();
+  attachLinkSmoothScroll();
+  document.addEventListener('mousemove', handleMouseMove);
+  requestAnimationFrame(animateDeLorean);
+
+  setTimeout(() => {
+    loadingFill.style.width = '100%';
+  }, 100);
+
+  setTimeout(() => {
+    loadingScreen.classList.add('glitch');
+    animateHeroLetters();
+  }, 2100);
+
+  setTimeout(() => {
+    loadingScreen.classList.add('loaded');
+    body.classList.remove('loading');
+    animateStats();
+  }, 2400);
+
+  window.addEventListener('resize', () => {
+    setCanvasSize();
+    createParticles();
+  });
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 24) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+}
+
+window.addEventListener('DOMContentLoaded', init);
