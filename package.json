@@ -1,0 +1,24 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Sai Anand Reddy Singareddy - Generative AI Engineer",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx serve .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saianandreddy-ai/my-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saianandreddy-ai/my-portfolio/issues"
+  },
+  "homepage": "https://github.com/saianandreddy-ai/my-portfolio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
