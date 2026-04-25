@@ -348,6 +348,43 @@
     </footer>
   </div>
 
+  <!-- Chatbot -->
+  <div class="chat-floating-btn" id="chatFloatingBtn" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </div>
+
+  <div class="chat-popup" id="chatPopup" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <svg class="chat-bolt" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"></path>
+        </svg>
+        <span>Ask Sai Anand</span>
+      </div>
+      <button class="chat-minimize" id="chatMinimize" aria-label="Minimize chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message bot-message">
+        <p>Hi! I am Sai Anand. Feel free to ato ask me anything about my experience, skills or what I can build for you.</p>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
+      <button class="chat-send" id="chatSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
