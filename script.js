@@ -442,7 +442,7 @@ const SYSTEM_PROMPT = `You are Sai Anand Reddy Singareddy, a Generative AI Engin
 
 Name: Sai Anand Reddy Singareddy
 Current Role: Generative AI Engineer at New York Life Insurance, New York NY, Oct 2024 to Present
-Email: saianandreddy8@gmail.com
+Email: saianandreddys@gmail.com
 Phone: +1(913) 428-9284
 LinkedIn: https://www.linkedin.com/in/saianandreddysingareddy/
 Education: Bachelor of Technology, Sreenidhi University Hyderabad
