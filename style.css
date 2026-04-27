@@ -582,7 +582,7 @@ button {
   bottom: -80px;
   display: grid;
   place-items: center;
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .profile-ring {
@@ -1477,7 +1477,8 @@ button {
   }
 }
 
-/* Move profile left when chat opens */
+/* Profile when chat opens */
 body.chat-open .profile-wrap {
-  right: 400px;
+  transform: translateX(-400px) scale(0.75);
+  transform-origin: right center;
 }
