@@ -130,14 +130,6 @@ function drawBackground(timestamp) {
   requestAnimationFrame(drawBackground);
 }
 
-function startCanvas() {
-  setCanvasSize();
-  createParticles();
-  if (!prefersReducedMotion) {
-    requestAnimationFrame(drawBackground);
-  }
-}
-
 function handleMouseMove(event) {
   if (!deLorean) return;
   deLoreanTargetX = event.clientX - 40;
@@ -174,7 +166,7 @@ function animateDeLorean() {
     const trailScale = Math.min(Math.max(speed / 40, 0.9), 2.2);
     trailLeft.style.setProperty('--trail-scale', trailScale.toFixed(2));
     trailRight.style.setProperty('--trail-scale', trailScale.toFixed(2));
-    
+
     if (deLoreanFacing === 'right') {
       trailLeft.classList.add('active');
       trailRight.classList.remove('active');
@@ -182,7 +174,7 @@ function animateDeLorean() {
       trailLeft.classList.remove('active');
       trailRight.classList.add('active');
     }
-    
+
     trailLeft.style.left = `${deLoreanX}px`;
     trailLeft.style.top = `${deLoreanY + 8}px`;
     trailRight.style.left = `${deLoreanX + 80}px`;
@@ -462,7 +454,7 @@ Cloud: AWS SageMaker, EKS, S3, Glue, Azure OpenAI, ML, Databricks, AKS, GCP Vert
 Big Data: Apache Spark, PySpark, Kafka, Airflow, Hadoop, Snowflake
 DevOps: Docker, Kubernetes, Jenkins, MLflow, Prometheus, Grafana
 Databases: PostgreSQL, MongoDB, Neo4j, Oracle, FAISS, OpenSearch
-Programming: Python, SQL, Node.js, Bash
+Programming: Python SQL Node.js Bash
 
 If asked about the resume say they can download it from the website. If asked about availability say you are open to senior AI roles and consulting. Always speak as Sai Anand in first person. Never break character.`;
 
@@ -499,6 +491,7 @@ function openChat() {
   chatPopup.classList.add('open');
   chatPopup.setAttribute('aria-hidden', 'false');
   chatInitialized = true;
+  document.body.classList.add('chat-open');
   setTimeout(() => {
     document.getElementById('chatInput')?.focus();
   }, 400);
@@ -509,6 +502,7 @@ function closeChat() {
   const chatPopup = document.getElementById('chatPopup');
   chatPopup.classList.remove('open');
   chatPopup.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('chat-open');
   setTimeout(() => {
     chatFloatingBtn.style.display = 'flex';
   }, 400);
